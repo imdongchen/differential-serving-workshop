@@ -1,6 +1,12 @@
 <html>
     <body>
-    Hi This is great!
+    <p id="greeting"></p>
+    <script>
+      window.onerror = function (e) {
+        console.log('Error: ', e);
+        document.getElementById('greeting').innerHTML = e;
+      };
+    </script>
     <script src="dist/index.js"></script>
     </body>
 </html>
