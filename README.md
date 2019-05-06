@@ -15,8 +15,40 @@ The app includes a basic setup of webpack and babel. A few useful commands:
 In `babel.config.js`, we have specified `targets` to IE10, so syntax will be transpiled by `@babel/preset-env`. But we need to provide polyfill!
 
 Follow these steps:
-1. In `index.js`, add `import '@babel/polyfill'`
-2. Rebuild js. `npm run build`
-3. Refresh in IE. Everything should be working!
-4. Observe size of the output js. `npm run analyze`
-5. To fix the bloating size issue, add `useBuiltIns: usage` in `babel.config.js`
+1. Create a preset function in `babel.config.js`
+
+```javascript
+function getPresets(env) {
+  const isModern = env === 'modern'
+  return [
+    [
+      "@babel/preset-env",
+      {
+        targets: {
+          ...!isModern && {browsers: ['ie 10', 'ios 7']},
+          ...isModern && {esmodules: true},
+        },
+        useBuiltIns: 'usage',
+        debug: true,
+      }
+    ]
+  ]
+}
+```
+
+2. Add two babel env in `babel.config.js`
+
+```javascript
+module.exports = {
+  env: {
+    'modern': { presets: getPresets('modern') },
+    'legacy': { presets: getPresets('legacy') },
+  },
+}
+```
+
+3. Pass down babel env to `babel-loader` using `babelOptions.envName` in `webpack.config.js` 
+4. Create a config function in `webpack.config.js` and export an array of configs.
+5. Build JS and you should see two js bundles. 
+6. Include these two js bundles in `index.html` with `type=module` and `nomodule`
+7. You are done!
