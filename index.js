@@ -1,5 +1,3 @@
-import '@babel/polyfill'
-
 function main() {
   console.log('testing')
   const a = [1,2,3]
