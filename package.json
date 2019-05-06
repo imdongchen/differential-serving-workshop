@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "start": "http-server ./ -o",
+    "build": "webpack",
+    "analyze": "webpack -p --env.analyze"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +15,12 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "babel-loader": "^8.0.5",
+    "http-server": "^0.11.1",
     "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
   }
 }

@@ -4,7 +4,7 @@ module.exports = {
       "@babel/preset-env",
       {
         targets: {
-          esmodules: true
+          browsers: ['ie 10', 'ios 7'],
         },
       }
     ]
