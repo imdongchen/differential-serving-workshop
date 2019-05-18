@@ -2,7 +2,7 @@
 
 See [decks](https://slides.com/dongchen-1/differential-serving)
 
-The workshop includes three parts:
+The workshop includes three parts (check the branches):
 
 1. Setup
 
