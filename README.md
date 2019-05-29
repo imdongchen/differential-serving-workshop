@@ -1,6 +1,6 @@
 # Differential serving workshop
 
-See [decks](https://slides.com/dongchen-1/differential-serving)
+See [decks](https://slides.com/imdongchen/differential-servingg)
 
 The workshop includes three parts (check the branches):
 
